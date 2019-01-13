@@ -1,3 +1,12 @@
+import pandas as pd
+import numpy as np
+import datashader
+import bokeh.plotting
+import collections
+import xarray
+import time
+from datashader import utils
+
 import os
 import sys
 import time
@@ -7,8 +16,6 @@ import h5py as reza
 import pandas as pd
 from pip._vendor.distlib.compat import raw_input
 
-import datashader as ds
-import datashader.transfer_functions as tf
 
 files = []
 files_number = 0
@@ -135,14 +142,14 @@ elif work_type == "2":
 
         data['year'] = file['musicbrainz']['songs'][0][1]
 
-        #df = df.append(data, ignore_index=True)
+        # df = df.append(data, ignore_index=True)
         df.loc[files_pointer] = data
 
     # print("size of data dictionary = ", len(data['release']))
     # print("size of danceability in data dictionary = ", len(data['danceability']))
     # print("size of year in data dictionary = ", len(data['year']))
 
-    #df.to_pickle("D:\\DSOutput", protocol=4)
+    df.to_pickle("D:\\DSOutput", protocol=4)
 
     print(df)
 
